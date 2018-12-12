@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Alarm } from "../models/alarm";
+import { AlarmResult } from "../models/alarm-result";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { error } from '@angular/compiler/src/util';
 
 const HOST = "training.cumulocity.com";
 const AUTH_KEY = "Basic dGVzdDpUZXN0MDEyMzQ=";
@@ -15,7 +14,7 @@ const ALARMS_BASE_URL = "/alarm/alarms?pageSize=2000&resolved=false";
 export class AlarmService {
   constructor(private http: HttpClient) { }
 
-  getAllAlarms(): Observable<Alarm[]> {
+  getAllAlarms(): Observable<AlarmResult[]> {
     let headerParams = new HttpHeaders({
       "location": HOST,
       Authorization: AUTH_KEY
@@ -25,7 +24,7 @@ export class AlarmService {
     });
     return response.pipe(
       map(data => {
-        return data["alarms"] as Alarm[];
+        return data["alarms"] as AlarmResult[];
       })
     );
   }

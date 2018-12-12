@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { Alarm } from "src/app/models/alarm";
+import { AlarmResult } from "src/app/models/alarm-result";
 import { AlarmService } from "src/app/services/alarm.service";
-import { Device } from 'src/app/models/device';
+import { DeviceResult } from 'src/app/models/device-result';
 
 @Component({
   selector: "app-device-list",
@@ -9,13 +9,13 @@ import { Device } from 'src/app/models/device';
   styleUrls: ["./device-list.component.scss"]
 })
 export class DeviceListComponent implements OnInit {
-  alarmList: Alarm[];
-  deviceList: Device[];
+  alarmList: AlarmResult[];
+  deviceList: DeviceResult[];
 
   constructor(private alarmService: AlarmService) { }
 
   ngOnInit() {
-    this.alarmService.getAllAlarms().subscribe((data: Alarm[]) => {
+    this.alarmService.getAllAlarms().subscribe((data: AlarmResult[]) => {
       this.alarmList = data;
       let devices = this.alarmList.map((alarm) => {
         return alarm.source;

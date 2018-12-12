@@ -1,7 +1,7 @@
 import { Severity } from "./severity.enum";
-import { Device } from "./device";
+import { DeviceResult } from "./device-result";
 
-export interface Alarm {
+export interface AlarmResult {
   id: number;
   creationTime: Date;
   time: Date;
@@ -9,7 +9,7 @@ export interface Alarm {
   text: string;
   status: string;
   severity: Severity;
-  source: Device;
+  source: DeviceResult;
   count: number;
   history: any;
 }
