@@ -13,7 +13,7 @@ const ALARMS_BASE_URL = "/alarm/alarms?pageSize=2000&resolved=false";
   providedIn: "root"
 })
 export class AlarmService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllAlarms(): Observable<Alarm[]> {
     let headerParams = new HttpHeaders({
@@ -26,10 +26,7 @@ export class AlarmService {
     return response.pipe(
       map(data => {
         return data["alarms"] as Alarm[];
-        },
-            error => {
-                console.log("test"+error);
-            })
+      })
     );
   }
 }
