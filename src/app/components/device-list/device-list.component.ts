@@ -34,6 +34,7 @@ export class DeviceListComponent {
     deviceResults.forEach(deviceResult => {
       let device = new DeviceListEntry(deviceResult);
       device.addAlarms(this.alarmList.filter((alarm) => alarm.source.id === deviceResult.id));
+      device.sortAlarms();
       this.deviceList.push(device);
     });
   });
