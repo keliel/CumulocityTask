@@ -1,5 +1,10 @@
 <ul>
     <li *ngFor="let device of deviceList">
-        <span>{{ device.name }}</span>
+        <span>{{ device.device.name }}</span>
+        <ul>
+            <li *ngFor="let alarm of device.alarms">
+                <span>{{ alarm.severity }}</span> | <span>{{ alarm.creationTime | date }}</span> | <span>{{ alarm.text }}</span>
+            </li>
+        </ul>
     </li>
 </ul>
